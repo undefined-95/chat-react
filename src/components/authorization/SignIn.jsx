@@ -58,10 +58,10 @@ function SignIn() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const data = useSelector((state) => state.users.items);
+  const users = useSelector((state) => state.users.items);
 
   const handleSubmit = (e) => {
-    data.map((item) => {
+    users.map((item) => {
       if (item.login === login && item.password === password) {
         dispatch(auth(item.id));
         history.push("/");

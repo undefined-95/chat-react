@@ -1,25 +1,25 @@
 const initialState = {
   items: [
     {
-    myId: 1,
-    contactId: 2,
-    text: 'hi',
-  },
+      myId: 1,
+      contactId: 2,
+      text: "hi",
+    },
     {
-    myId: 2,
-    contactId: 1,
-    text: 'hello',
-  },
+      myId: 2,
+      contactId: 1,
+      text: "hello",
+    },
     {
-    myId: 1,
-    contactId: 2,
-    text: 'world',
-  },
+      myId: 1,
+      contactId: 2,
+      text: "world",
+    },
     {
-    myId: 2,
-    contactId: 1,
-    text: 'What you the name?',
-  },
+      myId: 2,
+      contactId: 1,
+      text: "What you the name?",
+    },
   ],
 };
 

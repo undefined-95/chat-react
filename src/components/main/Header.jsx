@@ -7,9 +7,9 @@ import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { LogOut } from '../../redux/features/users';
+import { LogOut } from "../../redux/features/users";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,10 +41,14 @@ function Header() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    dispatch(LogOut())
+  const handleLogout = () => {
+    dispatch(LogOut());
     setAnchorEl(null);
   };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   const authId = useSelector((state) => state.users.authId);
 
@@ -85,7 +89,7 @@ function Header() {
               <NavLink to={`/profile/${authId}`} className={classes.link}>
                 <MenuItem onClick={handleClose}>Мой кабинет</MenuItem>
               </NavLink>
-                <MenuItem onClick={handleClose}>Выйти</MenuItem>
+              <MenuItem onClick={handleLogout}>Выйти</MenuItem>
             </Menu>
           </div>
         </Toolbar>
