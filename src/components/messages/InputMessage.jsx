@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  makeStyles,
+  Paper,
+  InputBase,
+  Divider,
+  IconButton,
+} from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -39,7 +41,7 @@ function InputMessage() {
   });
 
   const handleAddMessage = () => {
-    dispatch({ type: "add/message/fulfilled", payload: { message, id }})
+    dispatch({ type: "add/message/fulfilled", payload: { message, id } });
   };
   const classes = useStyles();
   return (

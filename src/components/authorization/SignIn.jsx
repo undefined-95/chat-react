@@ -1,56 +1,21 @@
 import React, { useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Box from "@material-ui/core/Box";
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Box,
+  Typography,
+  Container,
+} from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { auth } from "../../redux/features/users";
+import useStyles from "./style";
+import Copyright from "./Copyright";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-  link: {
-    color: "white",
-    textDecoration: "none",
-  },
-}));
-
-function SignIn() {
+function SignIn(props) {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -58,11 +23,10 @@ function SignIn() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const users = useSelector((state) => state.users.items);
-
   const handleSubmit = (e) => {
-    users.map((item) => {
+    props.users.map((item) => {
       if (item.login === login && item.password === password) {
+        auth(item.id);
         dispatch(auth(item.id));
         history.push("/");
       }
@@ -129,4 +93,16 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+const mapStateToProps = (state) => {
+  return {
+    users: state.users.items,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    authId: (id) => dispatch(auth(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(SignIn);

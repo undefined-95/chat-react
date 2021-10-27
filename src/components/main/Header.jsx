@@ -1,12 +1,14 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  MenuItem,
+  Menu,
+  IconButton,
+  makeStyles,
+} from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut } from "../../redux/features/users";
@@ -48,7 +50,6 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
 
   const authId = useSelector((state) => state.users.authId);
 

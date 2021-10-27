@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Main from "./main/Main";
-import SignIn from "./authorization/SignIn";
+import SignIn from "./authorization";
 import Header from "./main/Header";
 import Shape from "./Profile/Shape";
 import { useSelector } from "react-redux";
